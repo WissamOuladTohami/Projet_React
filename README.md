@@ -1,4 +1,4 @@
-# 🎨 TP — Création d'un Portfolio Web Personnel
+# Projet — Création d'un Portfolio Web Personnel
 
 Travaux pratiques portant sur la conception et le déploiement d'un portfolio web personnel moderne, responsive et accessible, mis en ligne via la plateforme Vercel. Ce projet permet de mettre en pratique les fondamentaux du développement front-end en produisant un livrable concret et publiable.
 
