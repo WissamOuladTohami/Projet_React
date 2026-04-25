@@ -5,7 +5,31 @@ import SectionIntro from "@/components/SectionIntro";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { education } from "@/data/education";
+import { certifications } from "@/data/certifications";
 import { profile } from "@/data/profile";
+
+const eduLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  alumniOf: education.map(e => ({
+    "@type": "CollegeOrUniversity",
+    name: e.school
+  }))
+};
+
+const certLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  hasCredential: (certifications ?? []).map(c => ({
+    "@type": "EducationalOccupationalCredential",
+    name: c.title,
+    recognizedBy: { "@type": "Organization", name: c.issuer },
+    validFrom: c.issueDate,
+    validUntil: c.expiryDate,
+    url: c.credentialUrl
+  }))
+};
 
 export default function Home() {
   return (
@@ -16,6 +40,8 @@ export default function Home() {
           name="description"
           content="Portfolio : IA, SIG, DevSecOps, Android et produits numeriques a fort impact."
         />
+        <script type="application/ld+json">{JSON.stringify(eduLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(certLd)}</script>
       </Helmet>
 
       <div className="space-y-8">
@@ -42,7 +68,7 @@ export default function Home() {
         <div className="flex flex-wrap gap-2" aria-label="badges de parcours">
           <Badge>Master IA (2025)</Badge>
           <Badge>AWS SAA</Badge>
-          <Badge>Recherche appliquee</Badge>
+          <Badge>CKA</Badge>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-3">
@@ -78,6 +104,31 @@ export default function Home() {
               J&apos;aime construire des experiences lisibles et rapides, du
               prototype de recherche jusqu&apos;au deploiement production.
             </p>
+          </div>
+
+          <div className="tech-panel flex min-h-56 items-center justify-center rounded-[1.75rem] p-4">
+            {profile.photo ? (
+              <img
+                src={profile.photo}
+                alt={`Portrait de ${profile.name}`}
+                className="h-full max-h-72 w-full rounded-[1.25rem] object-cover"
+              />
+            ) : (
+              <div className="flex flex-col items-center gap-3 text-center">
+                <div className="flex h-24 w-24 items-center justify-center rounded-full border border-primary/20 bg-primary/10 text-3xl font-bold text-primary">
+                  {profile.name
+                    .split(" ")
+                    .map((part) => part[0])
+                    .slice(0, 2)
+                    .join("")}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    Photo de profil a ajouter
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">

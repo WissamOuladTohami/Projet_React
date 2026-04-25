@@ -4,6 +4,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import ThemeToggle from "@/components/ThemeToggle";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -56,6 +57,7 @@ export default function RootLayout() {
                 {link.label}
               </NavLink>
             ))}
+            <ThemeToggle />
             <a href={`mailto:${profile.email}`}>
               <Button className="ml-1">Me contacter</Button>
             </a>
@@ -76,9 +78,7 @@ export default function RootLayout() {
       <footer className="mx-auto max-w-6xl px-4 pb-10 md:px-6">
         <Separator className="mb-6" />
         <div className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
-          <p>
-            © {new Date().getFullYear()} • {profile.name}
-          </p>
+          <p>© {new Date().getFullYear()} • {profile.name}</p>
           <div className="flex flex-wrap items-center gap-4">
             <span>{profile.location}</span>
             {profile.socials.map((social) => (

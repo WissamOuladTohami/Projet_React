@@ -1,20 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import SectionIntro from "@/components/SectionIntro";
-import { Card, CardContent } from "@/components/ui/card";
 import { education } from "@/data/education";
 
-function formatMonth(value?: string) {
-  if (!value) {
-    return "Present";
-  }
-
-  const [year, month] = value.split("-");
-  return `${month}/${year}`;
-}
+function fmt(s?: string){ if(!s) return "Présent"; const [y,m]=s.split("-"); return `${m}/${y}`; }
 
 export default function EducationPage() {
   return (
-    <section className="grid gap-8">
+    <section className="grid gap-6">
       <Helmet>
         <title>Formations - Portfolio</title>
         <meta
@@ -22,45 +13,21 @@ export default function EducationPage() {
           content="Diplomes, cours cles et points forts du parcours de formation."
         />
       </Helmet>
+      <h2 className="text-2xl font-semibold">Formations</h2>
+      <ol className="relative border-s">
+        {education.map(e=>(
+          <li key={e.school+e.start} className="ms-6 pb-6">
+            
+            <h3 className="font-semibold">
+              {e.degree}{e.field?` — ${e.field}`:""}
+               @ {e.school}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {fmt(e.start)} — {fmt(e.end)} {e.location?`• ${e.location}`:""} {e.gpa?`• GPA ${e.gpa}`:""}
+            </p>
 
-      <SectionIntro
-        eyebrow="Formation"
-        title="Formations"
-        description="Diplomes, cours cles et faits marquants presentes dans un format facile a mettre a jour."
-      />
-
-      <ol className="grid gap-6">
-        {education.map((item) => (
-          <li key={`${item.school}-${item.start}`}>
-            <Card>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-xl font-semibold">
-                    {item.degree}
-                    {item.field ? ` - ${item.field}` : ""} @ {item.school}
-                  </h2>
-                  <p className="text-sm text-muted-foreground">
-                    {formatMonth(item.start)} - {formatMonth(item.end)}
-                    {item.location ? ` • ${item.location}` : ""}
-                    {item.gpa ? ` • GPA ${item.gpa}` : ""}
-                  </p>
-                </div>
-
-                {item.courses?.length ? (
-                  <p className="text-sm text-muted-foreground">
-                    Cours: {item.courses.slice(0, 5).join(", ")}
-                  </p>
-                ) : null}
-
-                {item.highlights?.length ? (
-                  <ul className="list-disc space-y-1 pl-5 text-sm text-foreground">
-                    {item.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </CardContent>
-            </Card>
+            {e.courses?.length ? <p className="mt-2 text-sm">Cours: {e.courses.slice(0,5).join(", ")}</p> : null}
+            {e.highlights?.length ? <ul className="list-disc ms-5 mt-2 text-sm">{e.highlights.map(h=><li key={h}>{h}</li>)}</ul> : null}
           </li>
         ))}
       </ol>
