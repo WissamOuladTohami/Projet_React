@@ -1,126 +1,104 @@
-# Mon Portfolio
+# 🎨 TP — Création d'un Portfolio Web Personnel
 
-Portfolio personnel construit avec `Vite`, `React`, `TypeScript`, `Tailwind CSS`, `React Router`, `Framer Motion` et `React Helmet Async`.
+Travaux pratiques portant sur la conception et le déploiement d'un portfolio web personnel moderne, responsive et accessible, mis en ligne via la plateforme Vercel. Ce projet permet de mettre en pratique les fondamentaux du développement front-end en produisant un livrable concret et publiable.
 
-L'interface suit une direction visuelle moderne et technologique :
+---
 
-- fond sombre avec grille subtile
-- panneaux glassmorphism
-- accents cyan / blue
-- structure simple a personnaliser depuis des fichiers de donnees
+## 🎯 Objectifs
 
-## Stack
+- Concevoir une interface web personnelle soignée et professionnelle
+- Structurer une application front-end en composants réutilisables
+- Maîtriser la mise en page responsive avec CSS moderne (Flexbox / Grid)
+- Intégrer des animations et transitions pour améliorer l'expérience utilisateur
+- Organiser et architecturer un projet front-end de manière lisible et maintenable
+- Déployer une application web statique sur une plateforme d'hébergement cloud (Vercel)
+- Versionner le code source avec Git et GitHub
 
-- `Vite` pour le dev server et le build
-- `React 19` avec `TypeScript`
-- `Tailwind CSS` pour le styling
-- `React Router DOM` pour le multi-pages
-- `Framer Motion` pour les animations
-- `React Helmet Async` pour le SEO de base
-- `ESLint` + `Prettier` pour la qualite du code
+---
 
-## Demarrage
+## 🛠️ Technologies utilisées
 
-```bash
-npm install
-npm run dev
+| Outil / Technologie | Rôle |
+|---|---|
+| HTML5 | Structure sémantique des pages |
+| CSS3 | Mise en forme, animations, responsive design |
+| JavaScript (ES6+) | Interactivité, manipulation du DOM |
+| React.js | Construction de l'interface en composants réutilisables |
+| React Router | Navigation entre les sections / pages du portfolio |
+| Git & GitHub | Versionnement du code et collaboration |
+| Vercel | Déploiement continu et hébergement de l'application |
+| npm | Gestion des dépendances du projet |
+
+---
+
+## 🗂️ Architecture du projet
+
+```
+mon-portfolio/
+├── public/
+│   ├── index.html          → Point d'entrée HTML de l'application
+│   └── assets/             → Ressources statiques (favicon, images publiques)
+│
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx       → Barre de navigation principale avec liens d'ancrage
+│   │   ├── Hero.jsx         → Section d'accueil avec présentation et appel à l'action
+│   │   ├── About.jsx        → Section "À propos" avec biographie et compétences
+│   │   ├── Projects.jsx     → Galerie des projets réalisés avec descriptions
+│   │   ├── Contact.jsx      → Formulaire de contact et liens vers les réseaux
+│   │   └── Footer.jsx       → Pied de page avec mentions et liens sociaux
+│   │
+│   ├── styles/
+│   │   ├── global.css       → Variables CSS, reset, typographie globale
+│   │   └── components/      → Fichiers CSS spécifiques à chaque composant
+│   │
+│   ├── assets/
+│   │   ├── images/          → Photos de profil, captures de projets
+│   │   └── icons/           → Icônes SVG (technologies, réseaux sociaux)
+│   │
+│   ├── data/
+│   │   └── projects.js      → Données statiques des projets (titre, description, liens)
+│   │
+│   ├── App.jsx              → Composant racine, assemblage des sections
+│   └── main.jsx             → Point d'entrée React, rendu dans le DOM
+│
+├── .gitignore               → Fichiers et dossiers exclus du versionnement
+├── package.json             → Métadonnées du projet et dépendances npm
+├── vite.config.js           → Configuration du bundler Vite
+└── README.md                → Documentation du projet
 ```
 
-L'application sera disponible sur l'URL affichee par Vite, en general `http://localhost:5173`.
+---
 
-## Scripts
+## 📋 Exercices
 
-```bash
-npm run dev
-npm run build
-npm run preview
-npm run lint
-npm run format
-```
+| N° | Titre | Concepts abordés |
+|---|---|---|
+| 01 | Mise en place du projet | Initialisation avec Vite/CRA, structure de dossiers, Git init |
+| 02 | Création de la Navbar | Composants React, props, liens d'ancrage, responsive menu hamburger |
+| 03 | Section Hero | CSS Grid/Flexbox, animations d'entrée, typographie expressive |
+| 04 | Section À propos | Listes de compétences dynamiques, barres de progression, layout asymétrique |
+| 05 | Galerie de projets | Rendu de liste avec `.map()`, cards interactives, filtrage par technologie |
+| 06 | Formulaire de contact | Gestion des états avec `useState`, validation de formulaire, feedback utilisateur |
+| 07 | Responsive design | Media queries, mobile-first, tests multi-résolutions |
+| 08 | Animations & transitions | CSS transitions, keyframes, effets au scroll (Intersection Observer) |
+| 09 | Déploiement sur Vercel | Connexion GitHub ↔ Vercel, variables d'environnement, déploiement continu |
+| 10 | Optimisation & accessibilité | Balises sémantiques, attributs `aria-*`, Lighthouse audit, performances |
 
-## Structure
+---
 
-```text
-src/
-  app/           # layout global + router
-  components/    # composants UI et blocs reutilisables
-  data/          # contenu centralise du portfolio
-  lib/           # helpers
-  pages/         # pages de l'application
-public/
-  certs/         # badges et images publiques
-```
+## 🎬 Démonstration vidéo
 
-## Personnalisation rapide
+> 📎 
 
-### 1. Modifier votre profil
+https://github.com/user-attachments/assets/db0b2e2c-1d61-4e53-bf30-be9e1eec27a1
 
-Editez :
 
-- `src/data/profile.ts`
 
-Vous pourrez y changer :
-
-- nom
-- role
-- localisation
-- email
-- reseaux sociaux
-- texte de presentation
-- competences
-
-### 2. Ajouter vos projets
-
-Editez :
-
-- `src/data/projects.ts`
-
-Chaque projet accepte notamment :
-
-- `title`
-- `period`
-- `summary`
-- `tags`
-- `link`
-- `repo`
-
-### 3. Mettre a jour formation et certifications
-
-Editez :
-
-- `src/data/education.ts`
-- `src/data/certifications.ts`
-- `src/data/experience.ts`
-
-Pour les badges de certifications, placez vos images dans :
-
-- `public/certs/`
-
-Puis referencez-les dans `src/data/certifications.ts`.
-
-## Pages disponibles
-
-- `/`
-- `/projects`
-- `/experience`
-- `/education`
-- `/certifications`
-- `/contact`
-
-## SEO
-
-Chaque page declare un `title` et une `meta description` via `react-helmet-async`.
-
-## Build de production
-
-```bash
-npm run build
-```
-
-Le build genere les fichiers optimises dans `dist/`.
-
-## Notes
-
-- Le formulaire de contact est actuellement une UI prete a etre connectee a une API, `Formspree` ou `EmailJS`.
-- Les composants UI ont ete crees localement dans un style compatible avec l'approche `shadcn`, sans dependre du CLI.
-- Vous pouvez ensuite ajouter un mode clair, une timeline animee, une section blog ou une integration CMS/headless.
+- Navigation fluide entre les différentes sections du portfolio
+- Affichage correct sur mobile, tablette et desktop (responsive)
+- Interactions utilisateur : hover sur les cartes projets, ouverture des liens externes
+- Fonctionnement du formulaire de contact avec validation en temps réel
+- Animations au défilement et transitions entre les sections
+- Aperçu du déploiement en production sur Vercel (URL publique)
+- Présentation rapide de l'arborescence du code source sur GitHub
