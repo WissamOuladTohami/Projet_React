@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="88" fill="#FFF7ED"/>
+  <rect x="40" y="40" width="432" height="432" rx="64" fill="#FF9900"/>
+  <circle cx="256" cy="188" r="78" fill="#232F3E"/>
+  <path d="M256 126L272.787 177.648H327.093L283.153 209.704L299.94 261.352L256 229.296L212.06 261.352L228.847 209.704L184.907 177.648H239.213L256 126Z" fill="#FF9900"/>
+  <rect x="104" y="302" width="304" height="106" rx="28" fill="white"/>
+  <text x="256" y="338" text-anchor="middle" fill="#232F3E" font-family="Arial, sans-serif" font-size="28" font-weight="700">AWS SAA</text>
+  <text x="256" y="376" text-anchor="middle" fill="#475569" font-family="Arial, sans-serif" font-size="18">Solutions Architect</text>
+</svg>

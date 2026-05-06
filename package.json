@@ -1,0 +1,14 @@
+{
+  "name": "mon-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "install:app": "npm.cmd --prefix Projet_React ci",
+    "dev": "npm.cmd --prefix Projet_React run dev --",
+    "build": "npm.cmd --prefix Projet_React run build",
+    "preview": "npm.cmd --prefix Projet_React run preview",
+    "lint": "npm.cmd --prefix Projet_React run lint",
+    "format": "npm.cmd --prefix Projet_React run format"
+  }
+}
+
