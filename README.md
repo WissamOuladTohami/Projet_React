@@ -91,7 +91,6 @@ mon-portfolio/
 
 > 📎 
 
-https://github.com/user-attachments/assets/db0b2e2c-1d61-4e53-bf30-be9e1eec27a1
 
 
 
