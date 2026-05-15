@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { NavLink, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import ThemeToggle from "@/components/ThemeToggle";
 import { profile } from "@/data/profile";
@@ -16,6 +18,13 @@ const links = [
 ];
 
 export default function RootLayout() {
+  const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   return (
     <div className="min-h-dvh bg-background/90">
       <Helmet>
@@ -47,23 +56,79 @@ export default function RootLayout() {
             </div>
           </NavLink>
 
-          <div className="flex flex-wrap items-center gap-2 md:gap-3">
-            {links.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  cn(
-                    "rounded-full border border-transparent px-4 py-2 text-sm font-medium text-muted-foreground hover:border-white/10 hover:bg-white/[0.04] hover:text-primary",
-                    isActive &&
-                      "border-primary/20 bg-primary/15 text-primary hover:text-primary",
-                  )
-                }
+          <div className="flex items-center gap-2 md:gap-3">
+            <div className="hidden flex-wrap items-center gap-2 md:flex md:gap-3">
+              {links.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    cn(
+                      "rounded-full border border-transparent px-4 py-2 text-sm font-medium text-muted-foreground hover:border-white/10 hover:bg-white/[0.04] hover:text-primary",
+                      isActive &&
+                        "border-primary/20 bg-primary/15 text-primary hover:text-primary",
+                    )
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </div>
+
+            <Button
+              variant="ghost"
+              className="md:hidden"
+              aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-5 w-5"
+                aria-hidden="true"
               >
-                {link.label}
-              </NavLink>
-            ))}
+                {mobileMenuOpen ? (
+                  <path d="M18 6 6 18M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </Button>
           </div>
+
+          {mobileMenuOpen ? (
+            <div
+              id="mobile-nav"
+              className="w-full md:hidden"
+              role="navigation"
+              aria-label="Navigation mobile"
+            >
+              <div className="mt-2 flex flex-col gap-2 rounded-2xl border border-white/10 bg-background/60 p-2 backdrop-blur">
+                {links.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    className={({ isActive }) =>
+                      cn(
+                        "rounded-xl border border-transparent px-4 py-2 text-sm font-medium text-muted-foreground hover:border-white/10 hover:bg-white/[0.04] hover:text-primary",
+                        isActive &&
+                          "border-primary/20 bg-primary/15 text-primary hover:text-primary",
+                      )
+                    }
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </nav>
       </header>
 
