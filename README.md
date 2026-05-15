@@ -19,6 +19,42 @@ Un portfolio web **moderne**, **responsive** et **animé**, construit avec **Rea
 - Framer Motion
 - Vercel (déploiement)
 
+## 🗂️ Architecture du projet
+Ce dépôt contient une application Vite/React dans le dossier `Projet_React/`.
+
+### 🧱 Structure (simplifiée)
+```text
+mon-portfolio/
+├─ README.md
+├─ vercel.json
+└─ Projet_React/
+   ├─ index.html
+   ├─ public/
+   ├─ src/
+   │  ├─ app/                 # Router + layout global
+   │  ├─ components/          # Composants UI/feature
+   │  ├─ components/ui/       # UI primitives (Button, Card, etc.)
+   │  ├─ pages/               # Pages (routes)
+   │  ├─ data/                # Données statiques (profil, etc.)
+   │  ├─ lib/                 # Helpers (utils, cn, etc.)
+   │  ├─ assets/              # Images & ressources importées
+   │  ├─ main.tsx             # Entrée React
+   │  ├─ App.tsx              # App provider (router)
+   │  └─ index.css            # Styles globaux / Tailwind
+   ├─ tailwind.config.js
+   ├─ vite.config.ts
+   └─ package.json
+```
+
+### 🧭 Navigation & layout
+- `src/app/RootLayout.tsx` : header (navbar), `<Outlet />` pour les pages, footer + toggle thème.
+- `src/app/router` : définition des routes (React Router).
+
+## 📌 Fonctionnement (en bref)
+- Le **header** affiche les liens en desktop et un **menu mobile** (hamburger) sur petits écrans.
+- Les pages sont rendues via **React Router** et animées avec **Framer Motion**.
+- Le thème clair/sombre est géré via une classe `dark` sur le `documentElement`.
+
 ## ▶️ Démarrer en local
 ```bash
 cd Projet_React
@@ -31,6 +67,10 @@ npm run dev
 cd Projet_React
 npm run build
 ```
+
+## ☁️ Déploiement (Vercel)
+- Déploiement continu via GitHub → Vercel
+- URL publique (prod) : lien dans la section **Live (Vercel)**
 
 ## 🎥 Démo vidéo
 https://github.com/user-attachments/assets/883402b5-07a9-4cce-bc2c-b334ee37349f
